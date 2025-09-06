@@ -46,9 +46,9 @@ The app collects the following information to create your personalized plan:
 
 3. **Set up your OpenAI API key**
    
-   Create a file named `.env` in the project folder and add:
+   Create a folder named `.streamlit` and inside it create a file named `secrets.toml`:
    ```
-   OPENAI_API_KEY=your_openai_api_key_here
+   OPENAI_API_KEY = "your_openai_api_key_here"
    ```
    
    Replace `your_openai_api_key_here` with your actual OpenAI API key.
@@ -72,7 +72,8 @@ AIfitnessBuddy/
 ├── openai_integration.py  # OpenAI API integration
 ├── requirements.txt       # Python dependencies
 ├── README.md             # This file
-└── .env                  # Your API key (create this file)
+└── .streamlit/
+    └── secrets.toml      # Your API key (create this file)
 ```
 
 ## 🔧 File Explanations
@@ -112,9 +113,9 @@ Modify `WORKOUT_PROMPT_TEMPLATE` in `config.py` to change how the AI generates p
 ### Common Issues
 
 1. **"OpenAI API key not found"**
-   - Make sure you created the `.env` file
-   - Check that your API key is correct
-   - Ensure the `.env` file is in the same folder as `app.py`
+   - Make sure you created the `.streamlit/secrets.toml` file
+   - Check that your API key is correct and in quotes
+   - Ensure the `.streamlit` folder is in the same directory as `app.py`
 
 2. **"Error generating workout plan"**
    - Check your internet connection

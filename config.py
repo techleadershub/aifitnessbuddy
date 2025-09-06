@@ -3,14 +3,13 @@ Configuration file for AI Fitness Buddy app
 Contains all the constants and settings used throughout the app
 """
 
-import os
-from dotenv import load_dotenv
+import streamlit as st
 
-# Load environment variables from .env file
-load_dotenv()
-
-# OpenAI API Configuration
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# OpenAI API Configuration - Using Streamlit Secrets
+try:
+    OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+except KeyError:
+    OPENAI_API_KEY = None
 
 # App Configuration
 APP_TITLE = "AI Fitness Buddy"

@@ -12,8 +12,8 @@ def initialize_openai_client():
     Initialize and return OpenAI client
     """
     if not OPENAI_API_KEY:
-        st.error("⚠️ OpenAI API key not found! Please set your OPENAI_API_KEY in the .env file.")
-        st.info("💡 Create a .env file in your project directory with: OPENAI_API_KEY=your_key_here")
+        st.error("⚠️ OpenAI API key not found! Please add your OPENAI_API_KEY to Streamlit secrets.")
+        st.info("💡 Create a .streamlit/secrets.toml file with: OPENAI_API_KEY = \"your_key_here\"")
         return None
     
     try:
