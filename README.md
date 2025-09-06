@@ -144,7 +144,7 @@ If you encounter issues:
 
 - Your personal information is only sent to OpenAI to generate your workout plan
 - No data is stored permanently by this application
-- Your API key is kept secure in the `.env` file (never share this file)
+- Your API key is kept secure in the `.streamlit/secrets.toml` file (never share this file)
 
 ## 📈 Future Enhancements
 
