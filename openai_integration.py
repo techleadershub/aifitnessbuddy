@@ -5,19 +5,21 @@ Handles communication with OpenAI to generate personalized workout plans
 
 import streamlit as st
 from openai import OpenAI
-from config import OPENAI_API_KEY, WORKOUT_PROMPT_TEMPLATE
+from config import get_openai_api_key, WORKOUT_PROMPT_TEMPLATE
 
 def initialize_openai_client():
     """
     Initialize and return OpenAI client
     """
-    if not OPENAI_API_KEY:
+    api_key = get_openai_api_key()
+    
+    if not api_key:
         st.error("⚠️ OpenAI API key not found! Please add your OPENAI_API_KEY to Streamlit secrets.")
         st.info("💡 Create a .streamlit/secrets.toml file with: OPENAI_API_KEY = \"your_key_here\"")
         return None
     
     try:
-        client = OpenAI(api_key=OPENAI_API_KEY)
+        client = OpenAI(api_key=api_key)
         return client
     except Exception as e:
         st.error(f"❌ Error initializing OpenAI client: {str(e)}")
@@ -126,11 +128,13 @@ def check_api_status():
     """
     Check if OpenAI API is properly configured and accessible
     """
-    if not OPENAI_API_KEY:
+    api_key = get_openai_api_key()
+    
+    if not api_key:
         return False, "API key not found"
     
     try:
-        client = OpenAI(api_key=OPENAI_API_KEY)
+        client = OpenAI(api_key=api_key)
         # Test with a simple request
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",

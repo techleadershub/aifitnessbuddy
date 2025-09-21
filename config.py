@@ -6,10 +6,15 @@ Contains all the constants and settings used throughout the app
 import streamlit as st
 
 # OpenAI API Configuration - Using Streamlit Secrets
-try:
-    OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
-except KeyError:
-    OPENAI_API_KEY = None
+def get_openai_api_key():
+    """
+    Get OpenAI API key from Streamlit secrets
+    Returns None if not found to avoid import-time errors
+    """
+    try:
+        return st.secrets["OPENAI_API_KEY"]
+    except (KeyError, AttributeError):
+        return None
 
 # App Configuration
 APP_TITLE = "AI Fitness Buddy"
