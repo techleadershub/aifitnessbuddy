@@ -22,7 +22,13 @@ def initialize_openai_client():
         client = OpenAI(api_key=api_key)
         return client
     except Exception as e:
-        st.error(f"❌ Error initializing OpenAI client: {str(e)}")
+        error_msg = str(e)
+        if "proxies" in error_msg:
+            st.error("❌ OpenAI client version compatibility issue detected.")
+            st.info("💡 This is usually fixed by updating dependencies. Try redeploying your app.")
+            st.code("pip install --upgrade openai httpx")
+        else:
+            st.error(f"❌ Error initializing OpenAI client: {error_msg}")
         return None
 
 def generate_workout_plan(user_data):

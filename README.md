@@ -122,7 +122,12 @@ Modify `WORKOUT_PROMPT_TEMPLATE` in `config.py` to change how the AI generates p
    - Verify you have sufficient OpenAI API credits
    - Try refreshing the page
 
-3. **App won't start**
+3. **"Client.init() got an unexpected keyword argument 'proxies'"**
+   - This is a version compatibility issue between OpenAI and httpx libraries
+   - The updated requirements.txt should fix this automatically
+   - If deploying to Streamlit Cloud, redeploy your app to get the updated dependencies
+
+4. **App won't start**
    - Make sure you installed all requirements: `pip install -r requirements.txt`
    - Check that you're using Python 3.7 or higher
 
